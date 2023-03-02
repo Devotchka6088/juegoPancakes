@@ -10,17 +10,17 @@ public class Main {
 		
 		char[] letras = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray();
 		String ordenRan = "";
-		int nDiscos = 4;
+		int nDiscos = 8;
 		
 		for(int i=0;i<=nDiscos-1;i++) {
 			ordenPrin+=letras[i];
 		}
 		System.out.println("Inicio     > "+ordenPrin);
 		
-		//ordenRan = shuffle();
-		ordenRan = "CDAB";
+		ordenRan = shuffle();
+		//ordenRan = "CDAB";
 		
-		algoritmoAleatorio(ordenRan);
+		//algoritmoAleatorio(ordenRan);
 		
 		busquedaAmplitud(ordenRan);
 
@@ -46,7 +46,7 @@ public class Main {
 				i--;
 			}
 		}
-		System.out.println("Aleatorios > "+orden);
+		System.out.println("Aleatorio  > "+orden);
 		return orden;
 	}
 	
@@ -81,9 +81,9 @@ public class Main {
 		char[] pos = ordenRan.toCharArray();
 		String orden = "";
 		LinkedList<String> colaDiscos= new LinkedList<String>();
-		int[] noRegreso = new int[1000];
+		int[] noRegreso = new int[100000000];
 		int contador = 0;
-		Integer[] padre = new Integer[1000];
+		Integer[] padre = new Integer[100000000];
 		
 		colaDiscos.add(ordenRan);
 		noRegreso[0] = 0;
