@@ -10,7 +10,7 @@ public class Main {
 		
 		char[] letras = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray();
 		String ordenRan = "";
-		int nDiscos = 8;
+		int nDiscos = 6;
 		
 		for(int i=0;i<=nDiscos-1;i++) {
 			ordenPrin+=letras[i];
