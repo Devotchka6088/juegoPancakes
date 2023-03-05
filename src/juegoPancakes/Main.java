@@ -81,13 +81,13 @@ public class Main {
 		char[] pos = ordenRan.toCharArray();
 		String orden = "";
 		LinkedList<String> colaDiscos= new LinkedList<String>();
-		int[] noRegreso = new int[100000000];
+		LinkedList<Integer> noRegreso = new LinkedList<Integer>();
+		LinkedList<Integer> padre = new LinkedList<Integer>();
 		int contador = 0;
-		Integer[] padre = new Integer[100000000];
 		
 		colaDiscos.add(ordenRan);
-		noRegreso[0] = 0;
-		padre[0] = null;
+		noRegreso.add(0);
+		padre.add(null);
 		
 		for(int a=0;!veriSol(orden);a++) {
 			
@@ -95,11 +95,11 @@ public class Main {
 			
 			for(int i=1;i<pos.length;i++) {
 				
-				if(noRegreso[a]!=i) {
+				if((int)noRegreso.get(a)!=i) {
 					
 					contador++;
-					padre[contador] = a;
-					noRegreso[contador] = i;
+					padre.add(a);
+					noRegreso.add(i);
 					
 					for(int j=i;j>=0;j--) {
 						orden+=pos[j];
@@ -122,14 +122,14 @@ public class Main {
 		System.out.print("\n");
 		for(int z=1;z>0;z++) {
 			
-			if(noRegreso[contador]==0) {
+			if((int)noRegreso.get(contador)==0) {
 				System.out.println("Orden      > "+orden);
 			}else {
-				System.out.println("Orden      > "+orden+" > "+(noRegreso[contador]+1));
+				System.out.println("Orden      > "+orden+" > "+((int)noRegreso.get(contador)+1));
 			}
 			
 			pos = orden.toCharArray();
-			int x = noRegreso[contador];
+			int x = (int)noRegreso.get(contador);
 
 			if(!(orden.contentEquals(ordenRan))) {
 				orden = "";
@@ -142,7 +142,7 @@ public class Main {
 					orden+=pos[j];
 				}
 				
-				contador = padre[contador];
+				contador = (int)padre.get(contador);
 			} else {
 				System.out.println("Distancia > "+z);
 				break;
